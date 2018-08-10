@@ -3,9 +3,10 @@
 
 node{
 	echo 'Starting build...'
-	stage ('Pre-Clean'){
-		preClean()
-	}
+//	stage ('Pre-Clean'){
+//		echo 'Starting Pre-Clean stage...'
+//		preClean()
+//	}
 	stage ('SCM_Checkout'){
 		echo 'Attempting to get source from repo...'
 		timeout(time: 5, unit: 'MINUTES'){
