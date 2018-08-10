@@ -2,6 +2,10 @@
 //Leave the above line alone.  It identifies this as a groovy script.
 
 node{
+	echo 'Starting build...'
+	stage ('Pre-Clean'){
+		preClean()
+	}
 	stage ('SCM_Checkout'){
 		echo 'Attempting to get source from repo...'
 		timeout(time: 5, unit: 'MINUTES'){
