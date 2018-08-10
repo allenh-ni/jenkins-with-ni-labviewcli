@@ -8,7 +8,7 @@ node{
 			checkout scm
 		}
 	}
-//	stage ('RunVI'){
-//		bat 'LabVIEWCLI -OperationName RunVI -VIPath \"<insert VI Path>\ <input 1> <input 2>"'
-//	}
+	stage ('RunVI'){
+		bat 'LabVIEWCLI -OperationName RunVI -VIPath \"C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\source\\NI CLI Add.vi\" 1 2'
+	}
 }
