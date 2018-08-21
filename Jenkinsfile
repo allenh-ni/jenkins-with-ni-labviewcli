@@ -28,8 +28,8 @@ node{
 	//	bat 'LabVIEWCLI -OperationName RunVI -VIPath \"C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\source\\NI CLI Add.vi\" 1 2'
 	//}
 	
-	String via_configpath = 'C:\Program Files (x86)\Jenkins\workspace\Pipeline script from SCM\sample source\VI Aanlyzer tests\VI Analyzer Test.cfg'
-	String via_reportpath = 'C:\Program Files (x86)\Jenkins\workspace\Pipeline script from SCM\sample source\VI Aanlyzer tests\VI Analyzer Test.txt'
+	String via_configpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\VI Aanlyzer tests\\VI Analyzer Test.cfg'
+	String via_reportpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\VI Aanlyzer tests\\VI Analyzer Test.txt'
 	String via_reportsavetype = 'ASCII'
 	
 	stage ('Run VI Analyzer tests'){
