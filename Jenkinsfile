@@ -2,7 +2,7 @@
 //Leave the above line alone.  It identifies this as a groovy script.
 
 node{
-	String lv_exe_filepath = 'C:\Program Files (x86)\National Instruments\LabVIEW 2014\labview.exe'
+	String lv_exe_filepath = "C:\\Program Files (x86)\\National Instruments\\LabVIEW 2014\\labview.exe"
 	String lv_portnumber = '3363'
 	
 	echo 'Starting build...'
