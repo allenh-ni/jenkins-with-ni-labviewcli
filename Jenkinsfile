@@ -54,7 +54,7 @@ node{
 	String vipbBuild_RelativeOutputPath = "builds\\Acme_Math"
 	
 	stage('Build VIPM package'){
-		echo "Executing VIPM build specification \"${vipbBuild_RelativeVIPBPath\" to create a VIPM package..."
+		echo "Executing VIPM build specification \"${vipbBuild_RelativeVIPBPath}\" to create a VIPM package..."
 		bat "LabVIEWCLI -OperationName RunVI -VIPath \"${vipbBuild_vipath}\" \"${vipbBuild_RelativeVIPBPath}\" \"${vipbBuild_RelativeOutputPath}\" \"${WORKSPACE}\""
 	}
 	
