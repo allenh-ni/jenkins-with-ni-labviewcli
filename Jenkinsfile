@@ -37,7 +37,7 @@ node{
 	String buildspec_name = "My Packed Library"
 	stage('Build PPL')
 	{
-		echo "Executing the \"${buildspec_name}\" build specification in ${buildspec_lvprojectpath}...
+		echo "Executing the \"${buildspec_name}\" build specification in ${buildspec_lvprojectpath}..."
 		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName ExecuteBuildSpec -ProjectPath \"${buildspec_lvprojectpath}\" -TargetName \"${buildspec_targetname}\" -BuildSpecName \"${buildspec_name}\""
 	}
 	
@@ -46,7 +46,7 @@ node{
 	String buildspec_name = "My Application"
 	stage('Build EXE')
 	{
-		echo "Executing the \"${buildspec_name}\" build specification in ${buildspec_lvprojectpath}...
+		echo "Executing the \"${buildspec_name}\" build specification in ${buildspec_lvprojectpath}..."
 		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName ExecuteBuildSpec -ProjectPath \"${buildspec_lvprojectpath}\" -TargetName \"${buildspec_targetname}\" -BuildSpecName \"${buildspec_name}\""
 	}
 
