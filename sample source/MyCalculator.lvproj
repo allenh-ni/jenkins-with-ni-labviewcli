@@ -1,6 +1,7 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <Project Type="Project" LVVersion="14008000">
 	<Item Name="My Computer" Type="My Computer">
+		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.tcp.enabled" Type="Bool">false</Property>
@@ -28,8 +29,8 @@
 				<Property Name="utf.vector.test.bind" Type="Str">19B324CA-E866-A5B3-0E2B-2DD9D6BE10E4</Property>
 			</Item>
 		</Item>
+		<Item Name="acme_math.lvlib" Type="Library" URL="../acme_math/acme_math.lvlib"/>
 		<Item Name="Acme Calculator.vi" Type="VI" URL="../Acme Calculator.vi"/>
-		<Item Name="acme_math.lvlib" Type="Library" URL="../mymathlib/acme_math.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>
@@ -128,7 +129,7 @@
 				<Property Name="Source[0].itemID" Type="Str">{B89D0CB1-ECD4-4D21-AC53-7D0200261E7E}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[1].itemID" Type="Ref">/My Computer/acme_math.lvlib</Property>
+				<Property Name="Source[1].itemID" Type="Ref"></Property>
 				<Property Name="Source[1].Library.allowMissingMembers" Type="Bool">true</Property>
 				<Property Name="Source[1].Library.atomicCopy" Type="Bool">true</Property>
 				<Property Name="Source[1].Library.LVLIBPtopLevel" Type="Bool">true</Property>
