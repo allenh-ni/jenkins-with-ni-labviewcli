@@ -28,13 +28,20 @@ node{
 	//	bat 'LabVIEWCLI -OperationName RunVI -VIPath \"C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\source\\NI CLI Add.vi\" 1 2'
 	//}
 	
-	String via_configpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\VI Analyzer tests\\VI Analyzer Test.cfg"
-	String via_reportpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\VI Analyzer tests\\VI Analyzer Test.txt"
-	String via_reportsavetype = 'ASCII'
-	
+		
 	stage ('Run VI Analyzer tests'){
 		echo 'Running VI Analyzer task - \"${via_configpath}\"...'
+		String via_configpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\VI Analyzer tests\\VI Analyzer Test.cfg"
+		String via_reportsavetype = 'ASCII'
+		String via_reportpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\VI Analyzer results.txt"
         bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunVIAnalyzer -ConfigPath \"${via_configpath}\" -ReportPath \"${via_reportpath}\" -ReportSaveType \"${via_reportsavetype}\""
+	}	
+	
+	stage ('Run UTF unit tests'){
+		echo 'Runningn UTF unit tests...'
+		String utf_lvproject_path = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\MyCalculator.lvproj"
+		String utf_junit_reportpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\UTF results.xml"
+		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunUnitTests -ProjectPath \"${utf_lvproject_path}\" -JUnitReportPath \"${utf_junit_reportpath}\" -LabVIEWPath \"${lv_exe_filepath}\""
 	}
 	
 	//stage('Execute_Build_Spec'){
