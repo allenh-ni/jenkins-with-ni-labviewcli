@@ -1,4 +1,4 @@
-def call(lvproject_path, junit_reportpath, lv_exe_filepath, lv_portnumber){
+def call(utf_lvproject_path, utf_junit_reportpath, lv_exe_filepath, lv_portnumber){
 //Runs tests on the specified files in the LabVIEW Unit Test Framework Toolkit and saves the JUnit file to the specified location.
 //Note: To run this operation, you must install the UTF Junit Report library using the JKI VI Package Manager (VIPM) software. 
 
@@ -8,5 +8,5 @@ def call(lvproject_path, junit_reportpath, lv_exe_filepath, lv_portnumber){
 //lv_portnumber - Specifies the port of the VI server (Tools»Options»VI Server»TCP/IP). If this argument is left blank (""), this command will default to 3363.
 
         echo 'Running LabVIEW Unit Test Framework Toolkit tests in \"${lvproject_path}\"...'
-        bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunUnitTests -ProjectPath \"${lvproject_path}\" -JUnitReportPath \"${junit_reportpath}\" -LabVIEWPath \"${lv_exe_filepath}\""
+        bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunUnitTests -ProjectPath \"${utf_lvproject_path}\" -JUnitReportPath \"${utf_junit_reportpath}\" -LabVIEWPath \"${lv_exe_filepath}\""
 }
