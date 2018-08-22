@@ -49,7 +49,7 @@ node{
 		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName ExecuteBuildSpec -ProjectPath \"${buildspec_lvprojectpath}\" -TargetName \"${buildspec_targetname}\" -BuildSpecName \"${buildspec_name}\""
 	}
 
-	String vipbBuild_vipath = "C:\\Users\\Public\\Documents\\National Instruments\\LabVIEW CLI\\CI Steps\\nicli-vipbBuild.vi"
+	String vipbBuild_vipath = "C:\\Users\\Public\\Documents\\National Instruments\\LabVIEW CLI\\CI Steps\\nicli_vipbBuild.vi"
 	String vipbBuild_RelativeVIPBPath = "sample source\\acme_math.vipb"
 	String vipbBuild_RelativeOutputPath = "builds\\Acme_Math"
 	
