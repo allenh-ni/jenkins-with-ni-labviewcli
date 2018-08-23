@@ -62,7 +62,7 @@ node{
 	//String vipbBuild_vipath = "C:\\Users\\Public\\Documents\\National Instruments\\LabVIEW CLI\\CI Steps\\nicli_vipbBuild.vi"
 	String vipbBuild_VIPBPath = "${WORKSPACE}\\sample source\\acme_math.vipb"
 	stage('Build VIPM package'){
-		echo "Executing VIPM build specification \"${vipbBuild_RelativeVIPBPath}\" to create a VIPM package..."
+		echo "Executing VIPM build specification \"${vipbBuild_VIPBPath}\" to create a VIPM package..."
 		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName BuildVIPMPackage -VIPBPath \"${vipbBuild_VIPBPath}\""
 		//Note: You must install the add-on files for the BuildVIPMPackage CLI Operation.
 	}
