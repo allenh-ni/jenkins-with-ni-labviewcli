@@ -4,8 +4,8 @@
 node{
 	//lv_exe_filepath - Specifies the LabVIEW version to use to run the operation.  This argument is required on macOS and Linux but optional on Windows.  If this argument is left blank ("") on Windows, the LabVIEWCLI will use the most recent version of LabVIEW used on the machine.
 	//lv_portnumber - Specifies the port of the VI server (Tools»Options»VI Server»TCP/IP). If this argument is left blank (""), this command will default to 3363.
-	String lv_exe_filepath = "C:\\Program Files (x86)\\National Instruments\\LabVIEW 2014\\labview.exe"
-	String lv_portnumber = '3363'
+	String lv_exe_filepath = "C:\\Program Files (x86)\\National Instruments\\LabVIEW 2015\\labview.exe"
+	String lv_portnumber = '3364'
 	
 	echo 'Starting build...'
 	stage ('Pre-Clean'){
