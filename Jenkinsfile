@@ -2,6 +2,8 @@
 //Leave the above line alone.  It identifies this as a groovy script.
 
 node{
+	//lv_exe_filepath - Specifies the LabVIEW version to use to run the operation.  This argument is required on macOS and Linux but optional on Windows.  If this argument is left blank ("") on Windows, the LabVIEWCLI will use the most recent version of LabVIEW used on the machine.
+	//lv_portnumber - Specifies the port of the VI server (Tools»Options»VI Server»TCP/IP). If this argument is left blank (""), this command will default to 3363.
 	String lv_exe_filepath = "C:\\Program Files (x86)\\National Instruments\\LabVIEW 2014\\labview.exe"
 	String lv_portnumber = '3363'
 	
@@ -49,13 +51,15 @@ node{
 		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName ExecuteBuildSpec -ProjectPath \"${buildspec_lvprojectpath}\" -TargetName \"${buildspec_targetname}\" -BuildSpecName \"${buildspec_name}\""
 	}
 
-	String vipbBuild_vipath = "C:\\Users\\Public\\Documents\\National Instruments\\LabVIEW CLI\\CI Steps\\nicli_vipbBuild.vi"
+	//String vipbBuild_vipath = "C:\\Users\\Public\\Documents\\National Instruments\\LabVIEW CLI\\CI Steps\\nicli_vipbBuild.vi"
 	String vipbBuild_RelativeVIPBPath = "sample source\\acme_math.vipb"
-	String vipbBuild_RelativeOutputPath = "builds\\Acme_Math"
+	//String vipbBuild_RelativeOutputPath = "builds\\Acme_Math"
 	
 	stage('Build VIPM package'){
 		echo "Executing VIPM build specification \"${vipbBuild_RelativeVIPBPath}\" to create a VIPM package..."
-		bat "LabVIEWCLI -OperationName RunVI -VIPath \"${vipbBuild_vipath}\" \"${vipbBuild_RelativeVIPBPath}\" \"${vipbBuild_RelativeOutputPath}\" \"${WORKSPACE}\""
+		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName BuildVIPMPackage -VIPBPath \"${WORKSPACE}\\${vipbBuild_RelativeVIPBPath}\""
+		//Note: You must install the add-on files for the BuildVIPMPackage CLI Operation.
+		//bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunVI -VIPath \"${vipbBuild_vipath}\" \"${vipbBuild_RelativeVIPBPath}\" \"${vipbBuild_RelativeOutputPath}\" \"${WORKSPACE}\""
 	}
 	
 	//stage('Mass_Compile_VI_Project') {
