@@ -8,15 +8,23 @@ node{
 	String lv_portnumber = '3364'
 	
 	echo 'Starting build...'
+	
 	stage ('Pre-Clean'){
 		echo 'Starting Pre-Clean stage...'
 		preClean()
 	}
+	
 	stage ('SCM_Checkout'){
 		echo 'Attempting to get source from repo...'
 		timeout(time: 5, unit: 'MINUTES'){
 			checkout scm
 		}
+	}
+	
+	String DirectoryToCompile = "${WORKSPACE}\\sample source"
+	stage('Mass_Compile_VI_Project') {
+		echo "Starting mass-compile of \"${WORKSPACE}\\sample source\"..."
+		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName MassCompile -DirectoryToCompile \"${DirectoryToCompile}\""
 	}
 	
 	String via_configpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\VI Analyzer tests\\VI Analyzer Test.cfg"
@@ -52,23 +60,15 @@ node{
 	}
 
 	//String vipbBuild_vipath = "C:\\Users\\Public\\Documents\\National Instruments\\LabVIEW CLI\\CI Steps\\nicli_vipbBuild.vi"
-	String vipbBuild_RelativeVIPBPath = "sample source\\acme_math.vipb"
-	//String vipbBuild_RelativeOutputPath = "builds\\Acme_Math"
-	
+	String vipbBuild_VIPBPath = "${WORKSPACE}\\sample source\\acme_math.vipb"
 	stage('Build VIPM package'){
 		echo "Executing VIPM build specification \"${vipbBuild_RelativeVIPBPath}\" to create a VIPM package..."
-		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName BuildVIPMPackage -VIPBPath \"${WORKSPACE}\\${vipbBuild_RelativeVIPBPath}\""
+		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName BuildVIPMPackage -VIPBPath \"${vipbBuild_VIPBPath}\""
 		//Note: You must install the add-on files for the BuildVIPMPackage CLI Operation.
-		//bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunVI -VIPath \"${vipbBuild_vipath}\" \"${vipbBuild_RelativeVIPBPath}\" \"${vipbBuild_RelativeOutputPath}\" \"${WORKSPACE}\""
 	}
-	
-	//stage('Mass_Compile_VI_Project') {
-	//	echo 'Starting mass-compile...'
-	//	bat "LabVIEWCLI -OperationName MassCompile -DirectoryToCompile \"C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\source\""
-	//}
 	
 	//stage ('RunVI'){
 	//	echo 'Running VI...'
-	//	bat "LabVIEWCLI -OperationName RunVI -VIPath \"C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\source\\NI CLI Add.vi\" 1 2"
+	//	bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunVI -VIPath \"C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\source\\NI CLI Add.vi\" 1 2"
 	//}
 }
