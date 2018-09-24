@@ -40,6 +40,8 @@ node{
 	stage ('Run UTF unit tests'){
 		echo "Running UTF unit tests on ${utf_lvprojectpath}..."
 		bat "LabVIEWCLI -LabVIEWPath \"${lv_exe_filepath}\" -PortNumber \"${lv_portnumber}\" -OperationName RunUnitTests -ProjectPath \"${utf_lvprojectpath}\" -JUnitReportPath \"${utf_junitreportpath}\" -LabVIEWPath \"${lv_exe_filepath}\""
+		//Add Junit results
+		junit allowEmptyResults: true, testResults: "${utf_junitreportpath}"
 	}
 	
 	String buildspec_lvprojectpath = "C:\\Program Files (x86)\\Jenkins\\workspace\\Pipeline script from SCM\\sample source\\MyCalculator.lvproj"
